@@ -62,17 +62,23 @@ export default class App extends React.Component {
     }
   };
 
+
+
+
   render() {
-    const { images, isLoading, error } = this.state;
+    const { images, isLoading, error,  totalHits} = this.state;
     return (
       <div className={s.App}>
         <Searchbar onSubmit={this.queryImage} />
         {error && <h2>Error, please, try again</h2>}
         <ImageGallery data={images}/>
-        {!isLoading && images.length !== 0 && (
-        <Button onBtnClick={this.onBtnClick} />)}
+        
+        {images.length > 0 && totalHits > images.length && (
+          <Button onBtnClick={this.onBtnClick} />
+        )}
         { isLoading && <Loader />}
       </div>
     );
   }
 }
+
