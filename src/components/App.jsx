@@ -18,7 +18,8 @@ const App = () => {
 
   useEffect(() => {
     const queryImage = async () => {
-    if (searchQuery === null || searchQuery === undefined)
+      if (searchQuery === null) return;
+    if (searchQuery === undefined)
         return Notify.warning('Search query is invalid');
        setIsLoading(true);
     
